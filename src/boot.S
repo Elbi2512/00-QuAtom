@@ -14,7 +14,8 @@ _start:
     movk x1, #0x00ff, lsl #16
     movk x1, #0x00ff, lsl #32
     and x0, x0, x1
-    cmp x0, #BOOT_CORE_AFFINITY
+    mov x1, #BOOT_CORE_AFFINITY
+    cmp x0, x1
     b.eq 1f
 
 0:

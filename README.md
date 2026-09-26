@@ -20,7 +20,7 @@ This produces:
 ## Raspberry Pi Zero 2 W boot files
 
 The Pi Zero 2 W boots the 64-bit kernel image as `kernel8.img`. A matching
-sample boot configuration is provided in `/boot/config.txt`.
+sample boot configuration is provided in `boot/config.txt`.
 
 Copy `kernel8.img` and `boot/config.txt` to the boot partition of the SD card,
 then add the rest of the Raspberry Pi firmware files that your setup expects.
