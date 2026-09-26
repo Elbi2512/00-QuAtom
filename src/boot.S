@@ -9,13 +9,14 @@
 _start:
     mrs x0, mpidr_el1
     ubfx x1, x0, #32, #8
+    lsl x1, x1, #24
     ubfx x2, x0, #16, #8
-    ubfx x3, x0, #8, #8
-    and x0, x0, #0xff
-    orr x0, x0, x1
-    orr x0, x0, x2
-    orr x0, x0, x3
-    cbz x0, 1f
+    orr x1, x1, x2, lsl #16
+    ubfx x2, x0, #8, #8
+    orr x1, x1, x2, lsl #8
+    and x2, x0, #0xff
+    orr x1, x1, x2
+    cbz x1, 1f
 
 0:
     wfe
