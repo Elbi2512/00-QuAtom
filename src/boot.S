@@ -42,7 +42,6 @@ _start:
     bl kernel_main
 
 5:
-    wfe
     b 5b
 
 0:
