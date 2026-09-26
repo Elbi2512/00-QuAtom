@@ -31,8 +31,8 @@ _start:
 
 2:
     cmp x0, x1
-    b.eq 3f
-    str xzr, [x0], #8
+    b.hs 3f
+    strb wzr, [x0], #1
     b 2b
 
 3:
