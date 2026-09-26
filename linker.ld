@@ -26,6 +26,7 @@ SECTIONS
         __bss_start = .;
         *(.bss*)
         *(COMMON)
+        . = ALIGN(8);
         __bss_end = .;
     }
 

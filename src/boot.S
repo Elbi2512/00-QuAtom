@@ -32,7 +32,7 @@ _start:
 2:
     cmp x0, x1
     b.hs 3f
-    strb wzr, [x0], #1
+    str xzr, [x0], #8
     b 2b
 
 3:
