@@ -22,7 +22,7 @@ _start:
     ldaxr x1, [x0]
     cbnz x1, 0f
     mov x1, #1
-    stxr w2, x1, [x0]
+    stlxr w2, x1, [x0]
     cbnz w2, 1b
 
 2:
