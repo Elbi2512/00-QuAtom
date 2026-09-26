@@ -5,25 +5,10 @@
 .extern __stack_top
 .extern kernel_main
 
-.section .data.boot, "aw"
-.align 3
-boot_core_claim:
-    .quad 0
-
-.section .text.boot
 _start:
     mrs x0, mpidr_el1
     and x0, x0, #0xff
     cbnz x0, 0f
-
-    ldr x0, =boot_core_claim
-
-1:
-    ldaxr x1, [x0]
-    cbnz x1, 0f
-    mov x1, #1
-    stlxr w2, x1, [x0]
-    cbnz w2, 1b
 
 2:
     ldr x0, =__stack_top
