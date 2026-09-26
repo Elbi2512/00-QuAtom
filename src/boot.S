@@ -8,10 +8,7 @@
 
 _start:
     mrs x0, mpidr_el1
-    mov x1, #0xffff
-    movk x1, #0x00ff, lsl #16
-    movk x1, #0x00ff, lsl #32
-    and x0, x0, x1
+    and x0, x0, #0xff
     cbz x0, 1f
 
 0:
