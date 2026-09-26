@@ -17,8 +17,8 @@ OBJS := $(SRCS:$(SRC_DIR)/%=$(BUILD_DIR)/%)
 OBJS := $(OBJS:.S=.o)
 OBJS := $(OBJS:.c=.o)
 
-CFLAGS := --target=aarch64-none-elf -mcpu=cortex-a53 -ffreestanding -fno-builtin -fno-stack-protector -Wall -Wextra -MMD -MP
-LDFLAGS := --target=aarch64-none-elf -nostdlib -fuse-ld=lld -Wl,-T,$(LINKER_SCRIPT) -Wl,-Map,$(MAP)
+CFLAGS := --target=aarch64-none-elf -mcpu=cortex-a53 -ffreestanding -fno-builtin -fno-stack-protector -fno-pic -fno-pie -Wall -Wextra -MMD -MP
+LDFLAGS := --target=aarch64-none-elf -nostdlib -fuse-ld=lld -fno-pic -fno-pie -Wl,-T,$(LINKER_SCRIPT) -Wl,-Map,$(MAP)
 
 ifeq ($(strip $(OBJCOPY)),)
 $(error Unable to find llvm-objcopy. Install llvm-objcopy or invoke make with OBJCOPY=/path/to/llvm-objcopy)
