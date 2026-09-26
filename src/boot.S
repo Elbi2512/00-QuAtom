@@ -8,7 +8,13 @@
 
 _start:
     mrs x0, mpidr_el1
-    and x0, x0, #3
+    ubfx x1, x0, #32, #8
+    ubfx x2, x0, #16, #8
+    ubfx x3, x0, #8, #8
+    and x0, x0, #0xff
+    orr x0, x0, x1
+    orr x0, x0, x2
+    orr x0, x0, x3
     cbz x0, 1f
 
 0:

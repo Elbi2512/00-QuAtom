@@ -28,7 +28,10 @@ SECTIONS
         __bss_end = .;
     }
 
-    . = ALIGN(16);
-    . += 0x1000;
-    __stack_top = .;
+    .stack (NOLOAD) : ALIGN(16)
+    {
+        __stack_bottom = .;
+        . += 0x1000;
+        __stack_top = .;
+    }
 }
