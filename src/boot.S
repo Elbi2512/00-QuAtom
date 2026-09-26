@@ -1,5 +1,7 @@
 .section .text.boot
 
+.equ BOOT_CORE_AFFINITY, 0
+
 .global _start
 .extern __bss_start
 .extern __bss_end
@@ -8,8 +10,12 @@
 
 _start:
     mrs x0, mpidr_el1
-    and x0, x0, #0xff
-    cbz x0, 1f
+    mov x1, #0xffff
+    movk x1, #0x00ff, lsl #16
+    movk x1, #0x00ff, lsl #32
+    and x0, x0, x1
+    cmp x0, #BOOT_CORE_AFFINITY
+    b.eq 1f
 
 0:
     wfe
