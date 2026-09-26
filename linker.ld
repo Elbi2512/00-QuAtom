@@ -1,3 +1,5 @@
+STACK_SIZE = 0x1000;
+
 ENTRY(_start)
 
 SECTIONS
@@ -26,14 +28,14 @@ SECTIONS
         __bss_start = .;
         *(.bss*)
         *(COMMON)
-        . = ALIGN(8);
+        . = ALIGN(16);
         __bss_end = .;
     }
 
     .stack (NOLOAD) : ALIGN(16)
     {
         __stack_bottom = .;
-        . += 0x1000;
+        . += STACK_SIZE;
         __stack_top = .;
     }
 }

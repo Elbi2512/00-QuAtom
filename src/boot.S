@@ -12,6 +12,10 @@ boot_core_claim:
 
 .section .text.boot
 _start:
+    mrs x0, mpidr_el1
+    and x0, x0, #0xff
+    cbnz x0, 0f
+
     ldr x0, =boot_core_claim
 
 1:
